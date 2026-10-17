@@ -1,0 +1,846 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2457338895972862958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3872576699053570100}
+  - component: {fileID: 227063485121962872}
+  - component: {fileID: 2336631325626295982}
+  - component: {fileID: 8116338648273415844}
+  m_Layer: 0
+  m_Name: Rail
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3872576699053570100
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2457338895972862958}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.694, y: -0.619, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3874283452291450923}
+  - {fileID: 2715715423035182856}
+  - {fileID: 5632260476606730702}
+  - {fileID: 5179495795323046125}
+  - {fileID: 6197352408576023419}
+  - {fileID: 1124397635805590562}
+  - {fileID: 662874617656897312}
+  - {fileID: 5688098961130301373}
+  - {fileID: 8032898461259150055}
+  - {fileID: 5483044945764939322}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &227063485121962872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2457338895972862958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dab5c7d4c32e743048dfca98e2d5914f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Splines::UnityEngine.Splines.SplineContainer
+  m_Spline:
+    m_EditModeType: 1
+    m_Knots: []
+    m_MetaData: []
+    m_Closed: 0
+    m_IntData:
+      m_Data: []
+    m_FloatData:
+      m_Data: []
+    m_Float4Data:
+      m_Data: []
+    m_ObjectData:
+      m_Data: []
+  m_Splines:
+  - m_EditModeType: 1
+    m_Knots:
+    - Position:
+        x: 0
+        y: 0
+        z: 0
+      TangentIn:
+        x: -0
+        y: -0
+        z: -0.1
+      TangentOut:
+        x: 0
+        y: 0
+        z: 0.1
+      Rotation:
+        value:
+          x: 0.50000006
+          y: -0.49999994
+          z: 0.50000006
+          w: -0.49999994
+    - Position:
+        x: 1
+        y: 0
+        z: 0
+      TangentIn:
+        x: -0
+        y: -0
+        z: -0.1
+      TangentOut:
+        x: 0
+        y: 0
+        z: 0.1
+      Rotation:
+        value:
+          x: 0.50000006
+          y: -0.49999994
+          z: 0.50000006
+          w: -0.49999994
+    m_MetaData:
+    - Mode: 0
+      Tension: 0.5
+    - Mode: 0
+      Tension: 0.5
+    m_Closed: 0
+    m_IntData:
+      m_Data: []
+    m_FloatData:
+      m_Data: []
+    m_Float4Data:
+      m_Data: []
+    m_ObjectData:
+      m_Data: []
+  m_Knots:
+    m_KnotsLink: []
+--- !u!114 &2336631325626295982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2457338895972862958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8b6ed5828eb4afda07a58537a22d1a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD60.Railway.Renderers.RailwayRenderer
+  _spline: {fileID: 227063485121962872}
+  _plankPrefab: {fileID: 4984080633773407651, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+  _plankRotation: {x: 0, y: 0, z: 0.70710677, w: 0.70710677}
+  _gapBetweenPlanks: 0.1
+  _gapAtEnd: 0.05
+  _planks:
+  - {fileID: 9166302646976173931}
+  - {fileID: 8016740751552712776}
+  - {fileID: 349249952072896142}
+  - {fileID: 941327153576892333}
+  - {fileID: 2085286314800350267}
+  - {fileID: 5002283425080961890}
+  - {fileID: 4882472673637216352}
+  - {fileID: 288556014478686461}
+  - {fileID: 2705415859741879719}
+  - {fileID: 497286737738639738}
+  _builtWithLength: 1
+--- !u!114 &8116338648273415844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2457338895972862958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2886b58f50294cedae1efb370eb914c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD60.Railway.RailwayChunk
+  _splineContainer: {fileID: 227063485121962872}
+  _previousChunk:
+    _chunk: {fileID: 0}
+    _direction: 0
+  _isPreviousAccessible: 1
+  _nextChunk:
+    _chunk: {fileID: 0}
+    _direction: 0
+  _isNextAccessible: 1
+--- !u!1001 &18204237711398593
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872576699053570100}
+    m_Modifications:
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.49999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984080633773407651, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_Name
+      value: RailwayPlank
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+--- !u!4 &1124397635805590562 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+  m_PrefabInstance: {fileID: 18204237711398593}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5002283425080961890 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4984080633773407651, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+  m_PrefabInstance: {fileID: 18204237711398593}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &497935739640942019
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872576699053570100}
+    m_Modifications:
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.6000792
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984080633773407651, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_Name
+      value: RailwayPlank
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+--- !u!4 &662874617656897312 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+  m_PrefabInstance: {fileID: 497935739640942019}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4882472673637216352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4984080633773407651, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+  m_PrefabInstance: {fileID: 497935739640942019}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3056305671911058923
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872576699053570100}
+    m_Modifications:
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.099690504
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984080633773407651, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_Name
+      value: RailwayPlank
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+--- !u!4 &2715715423035182856 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+  m_PrefabInstance: {fileID: 3056305671911058923}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8016740751552712776 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4984080633773407651, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+  m_PrefabInstance: {fileID: 3056305671911058923}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4187852172123925192
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872576699053570100}
+    m_Modifications:
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984080633773407651, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_Name
+      value: RailwayPlank
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+--- !u!4 &3874283452291450923 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+  m_PrefabInstance: {fileID: 4187852172123925192}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9166302646976173931 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4984080633773407651, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+  m_PrefabInstance: {fileID: 4187852172123925192}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4695612597540111710
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872576699053570100}
+    m_Modifications:
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.70006245
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984080633773407651, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_Name
+      value: RailwayPlank
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+--- !u!1 &288556014478686461 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4984080633773407651, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+  m_PrefabInstance: {fileID: 4695612597540111710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5688098961130301373 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+  m_PrefabInstance: {fileID: 4695612597540111710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4752364231282078509
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872576699053570100}
+    m_Modifications:
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1997293
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984080633773407651, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_Name
+      value: RailwayPlank
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+--- !u!1 &349249952072896142 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4984080633773407651, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+  m_PrefabInstance: {fileID: 4752364231282078509}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5632260476606730702 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+  m_PrefabInstance: {fileID: 4752364231282078509}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4885760503447229657
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872576699053570100}
+    m_Modifications:
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.9003095
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984080633773407651, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_Name
+      value: RailwayPlank
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+--- !u!1 &497286737738639738 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4984080633773407651, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+  m_PrefabInstance: {fileID: 4885760503447229657}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5483044945764939322 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+  m_PrefabInstance: {fileID: 4885760503447229657}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5204831734953601550
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872576699053570100}
+    m_Modifications:
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.29993758
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984080633773407651, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_Name
+      value: RailwayPlank
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+--- !u!1 &941327153576892333 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4984080633773407651, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+  m_PrefabInstance: {fileID: 5204831734953601550}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5179495795323046125 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+  m_PrefabInstance: {fileID: 5204831734953601550}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6474890072236702104
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872576699053570100}
+    m_Modifications:
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.39992088
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984080633773407651, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_Name
+      value: RailwayPlank
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+--- !u!1 &2085286314800350267 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4984080633773407651, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+  m_PrefabInstance: {fileID: 6474890072236702104}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6197352408576023419 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+  m_PrefabInstance: {fileID: 6474890072236702104}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6962727262049849348
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3872576699053570100}
+    m_Modifications:
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.80027086
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4984080633773407651, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+      propertyPath: m_Name
+      value: RailwayPlank
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+--- !u!1 &2705415859741879719 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4984080633773407651, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+  m_PrefabInstance: {fileID: 6962727262049849348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8032898461259150055 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1142231061066605283, guid: 6569a91956988994db1ccd3860700eef, type: 3}
+  m_PrefabInstance: {fileID: 6962727262049849348}
+  m_PrefabAsset: {fileID: 0}
