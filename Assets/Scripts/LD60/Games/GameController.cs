@@ -18,8 +18,7 @@ namespace LD60.Games
         [SerializeField] private InputParser _inputParser;
         [SerializeField] private int _levelIndex;
 
-        private Level _currentLevelInstance;
-        public bool HasCurrentLevel => _currentLevelInstance;
+        public Level CurrentLevelInstance { get; private set; }
 
         private CancellationTokenSource _resultCancellationTokenSource;
 
@@ -33,17 +32,17 @@ namespace LD60.Games
             _resultCancellationTokenSource?.Dispose();
             _resultCancellationTokenSource = null;
 
-            if (_currentLevelInstance)
+            if (CurrentLevelInstance)
             {
-                _currentLevelInstance.Succeeded -= HandleCurrentLevelSucceeded;
-                _currentLevelInstance.Failed -= HandleCurrentLevelFailed;
+                CurrentLevelInstance.Succeeded -= HandleCurrentLevelSucceeded;
+                CurrentLevelInstance.Failed -= HandleCurrentLevelFailed;
 
                 if (destroyInstance)
                 {
-                    Destroy(_currentLevelInstance.gameObject);
+                    Destroy(CurrentLevelInstance.gameObject);
                 }
 
-                _currentLevelInstance = null;
+                CurrentLevelInstance = null;
             }
         }
 
@@ -70,21 +69,21 @@ namespace LD60.Games
             _inputParser.CurrentInputChanged -= RecordStartTime;
             _inputParser.CurrentInputChanged += RecordStartTime;
 
-            _currentLevelInstance = Instantiate(_levelsLibrary[_levelIndex], Vector3.zero, Quaternion.identity);
-            _currentLevelInstance.Succeeded += HandleCurrentLevelSucceeded;
-            _currentLevelInstance.Failed += HandleCurrentLevelFailed;
-            _objectiveManager.CurrentObjectiveHolder = _currentLevelInstance;
+            CurrentLevelInstance = Instantiate(_levelsLibrary[_levelIndex], Vector3.zero, Quaternion.identity);
+            CurrentLevelInstance.Succeeded += HandleCurrentLevelSucceeded;
+            CurrentLevelInstance.Failed += HandleCurrentLevelFailed;
+            _objectiveManager.CurrentObjectiveHolder = CurrentLevelInstance;
 
-            _camera.orthographicSize = _currentLevelInstance.OrthographicSize;
+            _camera.orthographicSize = CurrentLevelInstance.OrthographicSize;
         }
 
         private void RecordStartTime(string _)
         {
             _inputParser.CurrentInputChanged -= RecordStartTime;
 
-            if (!_currentLevelInstance) return;
+            if (!CurrentLevelInstance) return;
 
-            _currentLevelInstance.FirstInputTime = Time.time;
+            CurrentLevelInstance.FirstInputTime = Time.time;
         }
 
         private void HandleCurrentLevelFailed(ELevelStatus status)
@@ -107,11 +106,11 @@ namespace LD60.Games
 
         private async UniTask RunResultAsync(Action callback, CancellationToken cancellationToken)
         {
-            if (_currentLevelInstance)
+            if (CurrentLevelInstance)
             {
-                _currentLevelInstance.EndTime = Time.time;
+                CurrentLevelInstance.EndTime = Time.time;
 
-                var resultText = _currentLevelInstance.Status switch
+                var resultText = CurrentLevelInstance.Status switch
                 {
                     ELevelStatus.Incomplete => "???",
                     ELevelStatus.Complete => "SUCCESS",
@@ -120,13 +119,13 @@ namespace LD60.Games
                     _ => throw new ArgumentOutOfRangeException()
                 };
 
-                _currentLevelInstance.SetResultText(resultText);
+                CurrentLevelInstance.SetResultText(resultText);
 
                 await UniTask.WaitForSeconds(2, cancellationToken: cancellationToken);
 
-                if (_currentLevelInstance.Status == ELevelStatus.Complete)
+                if (CurrentLevelInstance.Status == ELevelStatus.Complete)
                 {
-                    _currentLevelInstance.SetResultText(resultText + "<br>" + "Time: " + FormatLevelDuration(_currentLevelInstance.Duration));
+                    CurrentLevelInstance.SetResultText(resultText + "<br>" + "Time: " + FormatLevelDuration(CurrentLevelInstance.Duration));
 
                     await UniTask.WaitForSeconds(2, cancellationToken: cancellationToken);
                 }

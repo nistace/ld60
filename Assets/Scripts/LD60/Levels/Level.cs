@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using LD60.Objectives;
 using LD60.Railway;
@@ -25,8 +26,10 @@ namespace LD60.Levels
         public ELevelStatus Status { get; private set; }
         private string ResultText { get; set; }
         public float Duration => EndTime - FirstInputTime;
+        public LevelTrainObjective SelectedObjective { get; set; }
 
         public event Action ObjectivesStateChanged;
+        public event Action SelectedObjectiveChanged;
         public event Action Succeeded;
         public event Action<ELevelStatus> Failed;
 
@@ -124,6 +127,11 @@ namespace LD60.Levels
 
             foreach (var objective in _objectives)
             {
+                if (SelectedObjective == objective)
+                {
+                    builder.Append("<mark=#00ff0055>");
+                }
+
                 var displayData = _displayConfig.GetData(objective.Status);
                 if (displayData.TryGetColor(out var textColor))
                 {
@@ -141,7 +149,7 @@ namespace LD60.Levels
                 }
 
                 builder.Append(objective.Exit.NameOnPanel);
-                builder.Append("</color>");
+                builder.Append("</color></mark>");
                 builder.AppendLine();
             }
 
@@ -166,6 +174,60 @@ namespace LD60.Levels
         {
             ResultText = resultText;
             ObjectivesStateChanged?.Invoke();
+        }
+
+        public void UnselectObjective()
+        {
+            if (SelectedObjective == null) return;
+
+            SelectedObjective = null;
+
+            SelectedObjectiveChanged?.Invoke();
+            ObjectivesStateChanged?.Invoke();
+        }
+
+        public void SelectNextObjective()
+        {
+            var selectNext = SelectedObjective == null;
+            foreach (var objective in _objectives)
+            {
+                if (objective == SelectedObjective)
+                {
+                    selectNext = true;
+                }
+                else if (selectNext && objective.Status == ELevelStatus.Incomplete)
+                {
+                    SelectedObjective = objective;
+                    SelectedObjectiveChanged?.Invoke();
+                    ObjectivesStateChanged?.Invoke();
+                    return;
+                }
+            }
+        }
+
+        public void SelectPreviousObjective()
+        {
+            if (SelectedObjective == null)
+            {
+                SelectNextObjective();
+                return;
+            }
+
+            var selectNext = SelectedObjective == null;
+            foreach (var objective in _objectives.Reverse())
+            {
+                if (objective == SelectedObjective)
+                {
+                    selectNext = true;
+                }
+                else if (selectNext && objective.Status == ELevelStatus.Incomplete)
+                {
+                    SelectedObjective = objective;
+                    SelectedObjectiveChanged?.Invoke();
+                    ObjectivesStateChanged?.Invoke();
+                    return;
+                }
+            }
         }
     }
 }

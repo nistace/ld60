@@ -15,6 +15,8 @@ namespace LD60.Trains
         [SerializeField] private float _stopDistance = .5f;
 
         public float Speed { get; private set; }
+        public RailwayChunkWithDirection CurrentRailwayChunk => _currentRailwayChunk;
+        public float ProgressOnChunkRatio => _progressOnChunkRatio;
 
         public string NameOnPanel => _identity ? _identity.NameOnPanel : string.Empty;
         private float TimeToStop => Speed / _deceleration;

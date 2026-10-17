@@ -508,10 +508,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Train T1
       objectReference: {fileID: 0}
-    - target: {fileID: 2187107167657986024, guid: 6af240c51165fd24690e5006a392bfc7, type: 3}
-      propertyPath: m_SortingOrder
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 4295707901619809641, guid: 6af240c51165fd24690e5006a392bfc7, type: 3}
       propertyPath: _progressOnChunkRatio
       value: 0

@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 204351130782778156, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.maxCurve.m_Curve.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 204351130782778156, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.maxCurve.m_Curve.Array.data[2].time
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 869264755725401067, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
       propertyPath: m_Name
       value: 'Rail [0000]'

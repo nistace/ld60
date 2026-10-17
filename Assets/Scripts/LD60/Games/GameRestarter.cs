@@ -23,7 +23,7 @@ namespace LD60.Games
 
         private void HandleActionPerformed(InputAction.CallbackContext context)
         {
-            if (!_gameController.HasCurrentLevel) return;
+            if (!_gameController.CurrentLevelInstance) return;
 
             _gameController.RestartCurrentLevel();
         }
