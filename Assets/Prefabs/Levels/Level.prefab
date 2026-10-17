@@ -54,8 +54,10 @@ MonoBehaviour:
   _tipText: 
   _objectives:
   - _train: {fileID: 3739465346650352674}
+    _stops: []
     _exit: {fileID: 757485855134306498}
   _displayConfig: {fileID: 11400000, guid: eddd2b2e29f9b2e4096e9eb2887ef40b, type: 2}
+  _orthographicSize: 4
 --- !u!1001 &182115116895939098
 PrefabInstance:
   m_ObjectHideFlags: 0

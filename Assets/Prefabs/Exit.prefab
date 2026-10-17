@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7680877038194928522}
   - component: {fileID: 5529021926029924002}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: railway_11 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6313240074535437189}
   - component: {fileID: 3856711760086365358}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: railway_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1945203700553897296}
   - component: {fileID: 1782286977209355185}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 4667584860929795588}
   - component: {fileID: 8962096434721850714}
   - component: {fileID: 2413376348594636172}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9069148964189636949}
   - component: {fileID: 2626745321602748727}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}

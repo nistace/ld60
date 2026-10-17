@@ -25,6 +25,11 @@ namespace LD60.Railway.Renderers
             if (Mathf.Approximately(_builtWithLength, _spline.Spline.GetLength())) return;
 
             _builtWithLength = _spline.Spline.GetLength();
+            if (_builtWithLength > 20)
+            {
+                Debug.LogWarning($"Spline length is > 20 ({_builtWithLength}). Fishy!");
+                return;
+            }
 
             var plankIndex = 0;
 

@@ -257,7 +257,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.03
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1824,6 +1824,7 @@ GameObject:
   - component: {fileID: 1212215560}
   - component: {fileID: 1212215562}
   - component: {fileID: 1212215561}
+  - component: {fileID: 1212215563}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1871,10 +1872,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LD60.GameController
   _levelsLibrary: {fileID: 11400000, guid: b9d429d46ed35364889247625f440098, type: 2}
+  _camera: {fileID: 330585545}
   _objectiveManager: {fileID: 1212215561}
   _executor: {fileID: 1989243197}
   _inputParser: {fileID: 1989243195}
-  _levelIndex: 0
+  _levelIndex: 6
+--- !u!114 &1212215563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212215559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2316127b4df94b35bdd620c1fb0f5e92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD60.Games.GameRestarter
+  _gameController: {fileID: 1212215562}
+  _restartReference: {fileID: -8216514494577406785, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &1216039820
 GameObject:
   m_ObjectHideFlags: 0
@@ -2247,7 +2263,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 0
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -2765,7 +2781,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 0
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}

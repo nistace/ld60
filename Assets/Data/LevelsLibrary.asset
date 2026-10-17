@@ -10,11 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8830f68e91f74188a3876aa857c59f02, type: 3}
-  m_Name: New Levels Library
+  m_Name: LevelsLibrary
   m_EditorClassIdentifier: Assembly-CSharp::LD60.Levels.LevelsLibrary
   _levelPrefabs:
   - {fileID: 2137408093061660276, guid: 11a2776ed5ecd7d4999832bc415c562c, type: 3}
   - {fileID: 2137408093061660276, guid: 7aa7b2f559a2bcd4d83962bce4dd81fd, type: 3}
+  - {fileID: 2137408093061660276, guid: 4c4d5fe218d64a042bedef595067b450, type: 3}
   - {fileID: 2137408093061660276, guid: 6cf1a0d1030da394790c82a9cbf892c7, type: 3}
   - {fileID: 2137408093061660276, guid: 7381bbcf820f0674ebe13b1a3ce4274c, type: 3}
   - {fileID: 2137408093061660276, guid: 521742cc4abad534d9b6df05766ab76f, type: 3}
+  - {fileID: 2137408093061660276, guid: 0002e9efcf1f77e4d9a0d81f7ff6403d, type: 3}
+  - {fileID: 2137408093061660276, guid: b1bb332c016d73440b9dda0018eeaf72, type: 3}
+  - {fileID: 2137408093061660276, guid: e525c41cb08aa0044b70eda766932d03, type: 3}

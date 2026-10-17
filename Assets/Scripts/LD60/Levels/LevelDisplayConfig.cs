@@ -14,8 +14,7 @@ namespace LD60.Levels
         {
             ELevelStatus.Incomplete => _incomplete,
             ELevelStatus.Complete => _success,
-            ELevelStatus.WrongExit => _fail,
-            _ => throw new ArgumentOutOfRangeException(nameof(status), status, null),
+            _ => _fail
         };
 
         [Serializable]

@@ -4,6 +4,8 @@ Logs/
 obj/
 Temp/
 UserSettings
+_Recovery/
+_Recovery.meta
 
 *.csproj
 *.sln*

@@ -14,14 +14,16 @@ namespace LD60.Trains
         [SerializeField] private float _maxSpeed = 2;
         [SerializeField] private float _stopDistance = .5f;
 
-        private float _speed;
+        public float Speed { get; private set; }
 
         public string NameOnPanel => _identity ? _identity.NameOnPanel : string.Empty;
-        private float TimeToStop => _speed / _deceleration;
-        private float RequiredDistanceToStop => _speed * TimeToStop * .5f;
+        private float TimeToStop => Speed / _deceleration;
+        private float RequiredDistanceToStop => Speed * TimeToStop * .5f;
         private float CurrentDistanceFromChunkEnd => (1 - _progressOnChunkRatio) * _currentRailwayChunk.ChunkLength;
         public Color Color => _identity.Color;
+
         public event Action<Train, ExitRailwayComponent> ExitReached;
+        public event Action<Train, StationRailwayComponent> StationReached;
 
         private bool ShouldBrake()
         {
@@ -72,8 +74,8 @@ namespace LD60.Trains
 
             var brake = ShouldBrake();
 
-            _speed = Mathf.MoveTowards(_speed, brake ? 0 : _maxSpeed, Time.deltaTime * (brake ? _deceleration : _acceleration));
-            _progressOnChunkRatio += (_speed * Time.deltaTime) / chunkLength;
+            Speed = Mathf.MoveTowards(Speed, brake ? 0 : _maxSpeed, Time.deltaTime * (brake ? _deceleration : _acceleration));
+            _progressOnChunkRatio += (Speed * Time.deltaTime) / chunkLength;
         }
 
         private void OnDrawGizmos()
@@ -83,16 +85,7 @@ namespace LD60.Trains
             Gizmos.DrawLine(transform.position, worldPosition);
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            var exit = other.GetComponentInParent<ExitRailwayComponent>();
-            if (!exit)
-            {
-                Debug.LogWarning("Triggered entered: " + other.name + ", but it's not handled.");
-                return;
-            }
-
-            ExitReached?.Invoke(this, exit);
-        }
+        public void OnExitReached(ExitRailwayComponent exit) => ExitReached?.Invoke(this, exit);
+        public void OnStationReached(StationRailwayComponent station) => StationReached?.Invoke(this, station);
     }
 }

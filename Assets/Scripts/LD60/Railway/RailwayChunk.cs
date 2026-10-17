@@ -80,14 +80,14 @@ namespace LD60.Railway
             }
         }
 
-        public bool EvaluateWorld(float ratio, out Vector3 worldPosition, out Quaternion worldRotation)
+        public bool EvaluateWorld(float ratio, Quaternion rotationFix, out Vector3 worldPosition, out Quaternion worldRotation)
         {
             worldPosition = Vector3.zero;
             worldRotation = Quaternion.identity;
             if (!_splineContainer.Spline.Evaluate(ratio, out var position, out var tangent, out _)) return false;
 
             worldPosition = transform.TransformPoint(position);
-            worldRotation = Quaternion.LookRotation(Vector3.forward, tangent) * Quaternion.Euler(0, 0, 90);
+            worldRotation = Quaternion.LookRotation(Vector3.forward, tangent) * rotationFix;
 
             return true;
         }

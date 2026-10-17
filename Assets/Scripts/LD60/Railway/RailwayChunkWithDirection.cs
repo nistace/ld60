@@ -90,7 +90,10 @@ namespace LD60.Railway
 
             if (!_chunk) return false;
 
-            return _chunk.EvaluateWorld(_direction == EDirection.Forward ? positionOnChunk : 1 - positionOnChunk, out worldPosition, out worldRotation);
+            return _chunk.EvaluateWorld(_direction == EDirection.Forward ? positionOnChunk : 1 - positionOnChunk,
+                _direction == EDirection.Forward ? Quaternion.Euler(0, 0, 90) : Quaternion.Euler(0, 0, -90),
+                out worldPosition,
+                out worldRotation);
         }
     }
 }

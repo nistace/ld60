@@ -97,6 +97,12 @@ namespace LD60.Levels.Editor
                 EditorUtility.SetDirty(exitComponent);
             }
 
+            foreach (var stationComponent in level.GetComponentsInChildren<StationRailwayComponent>())
+            {
+                stationComponent.name = $"Station {stationComponent.NameOnPanel}";
+                EditorUtility.SetDirty(stationComponent);
+            }
+
             foreach (var namePanel in level.GetComponentsInChildren<NamePanel>())
             {
                 namePanel.SendMessage("OnValidate");

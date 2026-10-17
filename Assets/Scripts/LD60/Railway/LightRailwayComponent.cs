@@ -52,13 +52,16 @@ namespace LD60.Railway
 
             Gizmos.color = Color.darkOrchid;
             Gizmos.DrawSphere(transform.position, .05f);
-            Gizmos.color = _turnedOn ? Color.green : Color.red;
-
+            
             foreach (var chunk in _chunks)
             {
                 if (chunk.Chunk == null) continue;
                 Gizmos.DrawLine(transform.position, chunk.WorldOrigin);
             }
+            
+            Gizmos.color = _turnedOn ? Color.green : Color.red;
+            Gizmos.DrawCube(transform.position + Vector3.up * .3f, Vector3.one * .1f);
+
         }
 
         private void OnValidate() => _commandHolder.Command = $"LIGHT {NameOnPanel}";

@@ -4,6 +4,7 @@
     {
         Incomplete = 0,
         Complete = 1,
-        WrongExit = 2
+        WrongExit = 2,
+        SkippedStops = 3
     }
 }

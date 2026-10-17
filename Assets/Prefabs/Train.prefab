@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9006214293145210106}
   - component: {fileID: 7690715224545907100}
   - component: {fileID: 6115829423422227700}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ColorBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,9 @@ GameObject:
   - component: {fileID: 4295707901619809641}
   - component: {fileID: 9148185833134105847}
   - component: {fileID: 26716702159842966}
-  m_Layer: 0
+  - component: {fileID: 7924444445899249449}
+  - component: {fileID: 761907097671939488}
+  m_Layer: 6
   m_Name: Train
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,6 +229,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &7924444445899249449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403789434587190345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7781ed8d4ea4f1cb4cba38a5ff389ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD60.Trains.TrainExitChecker
+  _train: {fileID: 4295707901619809641}
+--- !u!114 &761907097671939488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403789434587190345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32e1cc6dfca34998b80eb648871ff1cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD60.Trains.TrainStationChecker
+  _train: {fileID: 4295707901619809641}
 --- !u!1 &7605692472524983793
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2364880778732413619}
   - component: {fileID: 8013358857358518846}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BarThingy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +357,7 @@ GameObject:
   - component: {fileID: 2783035525284780106}
   - component: {fileID: 4457074195540072946}
   - component: {fileID: 2187107167657986024}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4490982873506424132}
   - component: {fileID: 1666053603243188167}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -529,7 +557,7 @@ GameObject:
   - component: {fileID: 5248436926558129789}
   - component: {fileID: 1186098047256407515}
   - component: {fileID: 4513528291017166366}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: NamePanelText (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

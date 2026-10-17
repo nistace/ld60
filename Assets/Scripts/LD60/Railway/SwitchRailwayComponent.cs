@@ -60,6 +60,11 @@ namespace LD60.Railway
                 Gizmos.color = _turnedOn ? Color.red : Color.green;
                 Gizmos.DrawLine(_targetChunkWhenOff.WorldPosition(.1f), transform.position);
             }
+
+            Gizmos.color = _turnedOn ? Color.green : Color.red;
+            Gizmos.DrawCube(transform.position + Vector3.up * .15f, Vector3.one * .1f);
+            Gizmos.color = _turnedOn ? Color.red : Color.green;
+            Gizmos.DrawCube(transform.position - Vector3.up * .15f, Vector3.one * .1f);
         }
 
         private void RefreshImpactedChunks() => _splittingChunk.ChangeDestination(_turnedOn ? _targetChunkWhenOn : _targetChunkWhenOff);

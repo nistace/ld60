@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using LD60.Railway;
 using LD60.Trains;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace LD60.Levels
     public class LevelTrainObjective
     {
         [SerializeField] private Train _train;
+        [SerializeField] private StationRailwayComponent[] _stops;
         [SerializeField] private ExitRailwayComponent _exit;
 
         public Train Train => _train;
@@ -16,6 +18,20 @@ namespace LD60.Levels
 
         public ELevelStatus Status { get; set; } = ELevelStatus.Incomplete;
 
-        public string ToDisplayString() => $"Train {_train.NameOnPanel} to {_exit.NameOnPanel}";
+        public int CompletedStops { get; set; }
+        public int NextStopIndex => CompletedStops;
+
+        public bool HasNextStop => NextStopIndex < _stops.Length;
+
+        public StationRailwayComponent[] Stops => _stops;
+
+        public bool TryStop(StationRailwayComponent station)
+        {
+            if (NextStopIndex >= _stops.Length) return false;
+            if (station != _stops[NextStopIndex]) return false;
+
+            CompletedStops++;
+            return true;
+        }
     }
 }
