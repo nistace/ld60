@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7321519730559035963
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 869264755725401067, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: m_Name
+      value: 'Rail [0000]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1366275673115836051, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1639590248540636603, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: m_Name
+      value: 'Rail [0200]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1733192734675152016, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946425258019722498, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: m_Name
+      value: Train T1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084162138008325298, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1402.8928
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084162138008325298, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 582.847
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084162138008325298, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084162138008325298, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084162138008325298, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084162138008325298, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084162138008325298, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084162138008325298, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084162138008325298, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084162138008325298, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5204662919076834038, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: _chunks.Array.data[0]._chunk
+      value: 
+      objectReference: {fileID: 2441658571392502474}
+    - target: {fileID: 5204662919076834038, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: _chunks.Array.data[1]._chunk
+      value: 
+      objectReference: {fileID: 4265545037859894426}
+    - target: {fileID: 5204662919076834038, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: _chunks.Array.data[0]._direction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5204662919076834038, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: _chunks.Array.data[1]._direction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246204151659971671, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: m_Name
+      value: Level01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5956275032727536815, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236689246533991394, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: m_Name
+      value: Exit X1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661224939203859535, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: _tipText
+      value: Type <i>Light <Name></i> to toggle lights
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661224939203859535, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: _introText
+      value: Bring all trains to their destinations!
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063384888292196301, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: m_Name
+      value: Light A
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+--- !u!114 &2441658571392502474 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4934187002198188273, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+  m_PrefabInstance: {fileID: 7321519730559035963}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2886b58f50294cedae1efb370eb914c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD60.Railway.RailwayChunk
+--- !u!114 &4265545037859894426 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6820985291682979489, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+  m_PrefabInstance: {fileID: 7321519730559035963}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2886b58f50294cedae1efb370eb914c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD60.Railway.RailwayChunk

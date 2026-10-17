@@ -9,9 +9,11 @@ namespace LD60.Inputs
     {
         [SerializeField] private InputActionReference _validateInputActionReference;
         [SerializeField] private InputActionReference _eraseInputActionReference;
+        [SerializeField] private int _maxCharacters = 20;
+
         private Keyboard _keyboard;
 
-        private StringBuilder _inputBuilder = new();
+        private readonly StringBuilder _inputBuilder = new();
 
         public event Action<string> CurrentInputChanged;
         public event Action<string> InputCommitted;
@@ -58,6 +60,7 @@ namespace LD60.Inputs
         private void HandleTextInput(char character)
         {
             if (!TryParseCharacter(character, out var parsed)) return;
+            if (CurrentInput.Length >= _maxCharacters) return;
 
             _inputBuilder.Append(parsed);
             CurrentInputChanged?.Invoke(_inputBuilder.ToString());
@@ -77,6 +80,12 @@ namespace LD60.Inputs
             if (character is >= '0' and <= '9') return true;
 
             return false;
+        }
+
+        public void Clear()
+        {
+            _inputBuilder.Clear();
+            CurrentInputChanged?.Invoke(CurrentInput);
         }
     }
 }

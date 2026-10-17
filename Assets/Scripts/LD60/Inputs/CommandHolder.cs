@@ -9,6 +9,12 @@ namespace LD60.Inputs
 
         public event Action Executed;
 
+        public string Command
+        {
+            get => _command;
+            set => _command = value;
+        }
+
         private void OnEnable() => CommandExecutor.SubscribeCommandHandler(_command, HandleCommandExecuted);
         private void OnDisable() => CommandExecutor.UnsubscribeCommandHandler(_command);
 

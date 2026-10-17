@@ -114,9 +114,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 253
-        y: 1811
+        y: 1808
         width: 12
-        height: 54
+        height: 57
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,8 +225,8 @@ TextureImporter:
         serializedVersion: 2
         x: 533
         y: 1602
-        width: 29
-        height: 132
+        width: 28
+        height: 135
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,8 +247,8 @@ TextureImporter:
         serializedVersion: 2
         x: 580
         y: 1602
-        width: 29
-        height: 132
+        width: 28
+        height: 135
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -269,8 +269,8 @@ TextureImporter:
         serializedVersion: 2
         x: 627
         y: 1602
-        width: 29
-        height: 132
+        width: 28
+        height: 135
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -311,12 +311,12 @@ TextureImporter:
       name: railway_9
       rect:
         serializedVersion: 2
-        x: 691
-        y: 1601
-        width: 115
-        height: 136
+        x: 688
+        y: 1609
+        width: 116
+        height: 126
       alignment: 9
-      pivot: {x: 0.51149267, y: 0.016878016}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -333,10 +333,10 @@ TextureImporter:
       name: railway_10
       rect:
         serializedVersion: 2
-        x: 706
-        y: 1572
-        width: 27
-        height: 21
+        x: 554
+        y: 1757
+        width: 51
+        height: 55
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,12 +355,12 @@ TextureImporter:
       name: railway_11
       rect:
         serializedVersion: 2
-        x: 742
-        y: 1572
-        width: 27
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 812
+        y: 1610
+        width: 116
+        height: 126
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -369,6 +369,94 @@ TextureImporter:
       bones: []
       spriteID: 867970233c5113f44addb571789547f8
       internalID: -861268440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: railway_12
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 1739
+        width: 84
+        height: 57
+      alignment: 9
+      pivot: {x: 0.5078063, y: -0.35710064}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 962dbf2d915e269499771dd95756aa16
+      internalID: -1600554252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: railway_13
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 1260
+        width: 107
+        height: 182
+      alignment: 9
+      pivot: {x: 0.77, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18f588a1fca2dfd42855f7e0d50ebcd7
+      internalID: -1108724699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: railway_14
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 1259
+        width: 107
+        height: 182
+      alignment: 9
+      pivot: {x: 0.77, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68b6e358f74f57d41b897e3cad509249
+      internalID: -1266475642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: railway_15
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 1066
+        width: 492
+        height: 448
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e17a7cc06f325ea44bb3f77b8998b5cf
+      internalID: 1330938796
       vertices: []
       indices: 
       edges: []
@@ -393,6 +481,10 @@ TextureImporter:
       railway_1: 1584386981
       railway_10: 1519606955
       railway_11: -861268440
+      railway_12: -1600554252
+      railway_13: -1108724699
+      railway_14: -1266475642
+      railway_15: 1330938796
       railway_2: 466364297
       railway_3: 1926868502
       railway_4: -143689216

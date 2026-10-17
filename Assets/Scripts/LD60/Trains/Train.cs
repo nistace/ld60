@@ -4,8 +4,9 @@ using UnityEngine;
 
 namespace LD60.Trains
 {
-    public class Train : MonoBehaviour
+    public class Train : MonoBehaviour, IPanelNameItem
     {
+        [SerializeField] private TrainIdentity _identity;
         [SerializeField] private RailwayChunkWithDirection _currentRailwayChunk;
         [SerializeField, Range(0, 1)] private float _progressOnChunkRatio;
         [SerializeField] private float _acceleration = 1;
@@ -15,9 +16,12 @@ namespace LD60.Trains
 
         private float _speed;
 
+        public string NameOnPanel => _identity ? _identity.NameOnPanel : string.Empty;
         private float TimeToStop => _speed / _deceleration;
         private float RequiredDistanceToStop => _speed * TimeToStop * .5f;
         private float CurrentDistanceFromChunkEnd => (1 - _progressOnChunkRatio) * _currentRailwayChunk.ChunkLength;
+        public Color Color => _identity.Color;
+        public event Action<Train, ExitRailwayComponent> ExitReached;
 
         private bool ShouldBrake()
         {
@@ -77,6 +81,18 @@ namespace LD60.Trains
             Gizmos.color = Color.cyan;
             _currentRailwayChunk.EvaluateWorld(_progressOnChunkRatio, out var worldPosition, out _);
             Gizmos.DrawLine(transform.position, worldPosition);
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            var exit = other.GetComponentInParent<ExitRailwayComponent>();
+            if (!exit)
+            {
+                Debug.LogWarning("Triggered entered: " + other.name + ", but it's not handled.");
+                return;
+            }
+
+            ExitReached?.Invoke(this, exit);
         }
     }
 }

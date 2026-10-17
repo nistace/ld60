@@ -6,13 +6,15 @@ using UnityEngine;
 namespace LD60.Railway
 {
     [RequireComponent(typeof(CommandHolder))]
-    public class LightRailwayComponent : MonoBehaviour
+    public class LightRailwayComponent : MonoBehaviour, IPanelNameItem
     {
+        [SerializeField] private string _nameOnPanel = "A";
         [SerializeField, GetComponent] private CommandHolder _commandHolder;
         [SerializeField] private RailwayChunkWithDirection[] _chunks;
         [SerializeField] private bool _turnedOn = true;
 
         public bool TurnedOn => _turnedOn;
+        public string NameOnPanel => _nameOnPanel;
 
         public event Action<bool> TurnedOnChanged;
 
@@ -48,6 +50,8 @@ namespace LD60.Railway
         {
             if (_chunks == null) return;
 
+            Gizmos.color = Color.darkOrchid;
+            Gizmos.DrawSphere(transform.position, .05f);
             Gizmos.color = _turnedOn ? Color.green : Color.red;
 
             foreach (var chunk in _chunks)
@@ -56,5 +60,7 @@ namespace LD60.Railway
                 Gizmos.DrawLine(transform.position, chunk.WorldOrigin);
             }
         }
+
+        private void OnValidate() => _commandHolder.Command = $"LIGHT {NameOnPanel}";
     }
 }

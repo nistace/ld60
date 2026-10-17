@@ -18,6 +18,14 @@ namespace LD60.Railway
         public RailwayChunk Chunk => _chunk;
         public EDirection Direction => _direction;
 
+        public RailwayChunkWithDirection() { }
+
+        public RailwayChunkWithDirection(RailwayChunk chunk, EDirection direction)
+        {
+            _chunk = chunk;
+            _direction = direction;
+        }
+
         public Vector3 WorldOrigin => _direction switch
         {
             EDirection.Forward => _chunk.WorldOrigin,
@@ -32,18 +40,20 @@ namespace LD60.Railway
             _ => throw new ArgumentOutOfRangeException()
         };
 
+        public Vector3 WorldPosition(float ratio) => _chunk ? _chunk.WorldPosition(_direction == EDirection.Forward ? ratio : 1 - ratio) : Vector3.zero;
+
         public float ChunkLength => _chunk ? _chunk.SplineLength : 0;
 
         public void ChangeDestination(RailwayChunkWithDirection nextAtDestination)
         {
-            if (_direction == EDirection.Forward) _chunk.NextChunk = nextAtDestination;
-            else if (_direction == EDirection.Backward) _chunk.PreviousChunk = nextAtDestination;
+            if (_direction == EDirection.Forward) _chunk.NextChunkForward = nextAtDestination;
+            else if (_direction == EDirection.Backward) _chunk.NextChunkBackward = nextAtDestination;
         }
 
         public void SetOriginAccessible(bool accessible)
         {
-            if (_direction == EDirection.Forward) _chunk.IsPreviousAccessible = accessible;
-            else if (_direction == EDirection.Backward) _chunk.IsNextAccessible = accessible;
+            if (_direction == EDirection.Forward) _chunk.IsNextChunkBackwardAccessible = accessible;
+            else if (_direction == EDirection.Backward) _chunk.IsNextChunkForwardAccessible = accessible;
         }
 
         public bool IsNextAccessible()
@@ -52,8 +62,8 @@ namespace LD60.Railway
 
             return _direction switch
             {
-                EDirection.Forward => _chunk.IsNextAccessible,
-                EDirection.Backward => _chunk.IsPreviousAccessible,
+                EDirection.Forward => _chunk.IsNextChunkForwardAccessible,
+                EDirection.Backward => _chunk.IsNextChunkBackwardAccessible,
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
@@ -65,8 +75,8 @@ namespace LD60.Railway
 
             nextChunk = _direction switch
             {
-                EDirection.Forward => _chunk.NextChunk,
-                EDirection.Backward => _chunk.PreviousChunk,
+                EDirection.Forward => _chunk.NextChunkForward,
+                EDirection.Backward => _chunk.NextChunkBackward,
                 _ => throw new ArgumentOutOfRangeException()
             };
 

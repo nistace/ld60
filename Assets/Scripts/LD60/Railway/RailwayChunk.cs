@@ -9,66 +9,74 @@ namespace LD60.Railway
     public class RailwayChunk : MonoBehaviour
     {
         [SerializeField, GetComponent] private SplineContainer _splineContainer;
-        [SerializeField] private RailwayChunkWithDirection _previousChunk;
-        [SerializeField] private bool _isPreviousAccessible;
-        [SerializeField] private RailwayChunkWithDirection _nextChunk;
-        [SerializeField] private bool _isNextAccessible;
+        [SerializeField] private RailwayChunkWithDirection _nextChunkForward;
+        [SerializeField] private bool _isNextChunkForwardAccessible;
+        [SerializeField] private RailwayChunkWithDirection _nextChunkBackward;
+        [SerializeField] private bool _isNextChunkBackwardAccessible;
 
-        public Vector3 WorldOrigin => transform.TransformPoint(_splineContainer.Spline.EvaluatePosition(0));
-        public Vector3 WorldDestination => transform.TransformPoint(_splineContainer.Spline.EvaluatePosition(1));
+        public Vector3 WorldOrigin => WorldPosition(0);
+        public Vector3 WorldDestination => WorldPosition(1);
 
-        public RailwayChunkWithDirection PreviousChunk
+        public Vector3 WorldPosition(float ratio) => transform.TransformPoint(_splineContainer.Spline.EvaluatePosition(ratio));
+
+        public RailwayChunkWithDirection NextChunkForward
         {
-            get => _previousChunk;
-            set => _previousChunk = value;
+            get => _nextChunkForward;
+            set => _nextChunkForward = value;
         }
 
-        public RailwayChunkWithDirection NextChunk
+        public RailwayChunkWithDirection NextChunkBackward
         {
-            get => _nextChunk;
-            set => _nextChunk = value;
+            get => _nextChunkBackward;
+            set => _nextChunkBackward = value;
         }
 
-        public bool IsPreviousAccessible
+        public bool IsNextChunkBackwardAccessible
         {
-            get => _isPreviousAccessible;
-            set => _isPreviousAccessible = value;
+            get => _isNextChunkBackwardAccessible;
+            set => _isNextChunkBackwardAccessible = value;
         }
 
-        public bool IsNextAccessible
+        public bool IsNextChunkForwardAccessible
         {
-            get => _isNextAccessible;
-            set => _isNextAccessible = value;
+            get => _isNextChunkForwardAccessible;
+            set => _isNextChunkForwardAccessible = value;
         }
 
         public float SplineLength => _splineContainer ? _splineContainer.Spline.GetLength() : 0;
 
         private void OnDrawGizmos()
         {
-            if (_previousChunk.Chunk == null)
+            if (NextChunkBackward.Chunk == null)
             {
                 Gizmos.color = Color.red;
                 Gizmos.DrawSphere(WorldOrigin, .1f);
             }
-            else if (_previousChunk.WorldOrigin != WorldOrigin)
+            else if (NextChunkBackward.WorldOrigin != WorldOrigin)
             {
                 Gizmos.color = Color.red;
+                Gizmos.DrawLine(WorldOrigin, NextChunkBackward.WorldOrigin);
+            }
+            else
+            {
+                Gizmos.color = Color.green;
                 Gizmos.DrawSphere(WorldOrigin, .05f);
-                Gizmos.DrawSphere(_previousChunk.WorldOrigin, .05f);
-                Gizmos.DrawLine(WorldOrigin, _previousChunk.WorldOrigin);
             }
 
-            if (_nextChunk.Chunk == null)
+            if (NextChunkForward.Chunk == null)
             {
                 Gizmos.color = Color.red;
                 Gizmos.DrawSphere(WorldDestination, .1f);
             }
-            else if (_nextChunk.WorldOrigin != WorldDestination)
+            else if (NextChunkForward.WorldOrigin != WorldDestination)
             {
                 Gizmos.color = Color.red;
-                Gizmos.DrawSphere(WorldOrigin, .05f);
-                Gizmos.DrawSphere(_nextChunk.WorldOrigin, .05f);
-                Gizmos.DrawLine(WorldDestination, _nextChunk.WorldOrigin);
+                Gizmos.DrawLine(WorldDestination, NextChunkForward.WorldOrigin);
+            }
+            else
+            {
+                Gizmos.color = Color.green;
+                Gizmos.DrawSphere(WorldDestination, .05f);
             }
         }
 

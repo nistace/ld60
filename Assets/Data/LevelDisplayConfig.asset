@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3971dbbd6292450c9a50bea19305cc65, type: 3}
+  m_Name: LevelDisplayConfig
+  m_EditorClassIdentifier: Assembly-CSharp::LD60.Levels.LevelDisplayConfig
+  _incomplete:
+    _text: 32
+    _color: {r: 0, g: 0, b: 0, a: 0}
+  _success:
+    _text: 86
+    _color: {r: 0, g: 0, b: 0, a: 0}
+  _fail:
+    _text: 88
+    _color: {r: 1, g: 0.2705882, b: 0, a: 1}

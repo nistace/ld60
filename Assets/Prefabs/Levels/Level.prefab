@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3084162138008325298}
+  - component: {fileID: 8661224939203859535}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -25,18 +26,36 @@ Transform:
   m_GameObject: {fileID: 5246204151659971671}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 803949338036206144}
-  - {fileID: 1996256789581727793}
-  - {fileID: 100453500920133217}
-  - {fileID: 9109683000800321354}
-  - {fileID: 7712688939387999550}
   - {fileID: 5992924696650500256}
+  - {fileID: 803949338036206144}
+  - {fileID: 9109683000800321354}
+  - {fileID: 100453500920133217}
+  - {fileID: 1996256789581727793}
+  - {fileID: 7712688939387999550}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8661224939203859535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5246204151659971671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ac603467e18493ca06f02ff7ecabf25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD60.Levels.Level
+  _introText: 
+  _tipText: 
+  _objectives:
+  - _train: {fileID: 3739465346650352674}
+    _exit: {fileID: 757485855134306498}
+  _displayConfig: {fileID: 11400000, guid: eddd2b2e29f9b2e4096e9eb2887ef40b, type: 2}
 --- !u!1001 &182115116895939098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -479,9 +498,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3084162138008325298}
     m_Modifications:
+    - target: {fileID: 1186098047256407515, guid: 6af240c51165fd24690e5006a392bfc7, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1403789434587190345, guid: 6af240c51165fd24690e5006a392bfc7, type: 3}
       propertyPath: m_Name
-      value: Train
+      value: Train T1
       objectReference: {fileID: 0}
     - target: {fileID: 2187107167657986024, guid: 6af240c51165fd24690e5006a392bfc7, type: 3}
       propertyPath: m_SortingOrder
@@ -540,6 +563,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6af240c51165fd24690e5006a392bfc7, type: 3}
+--- !u!114 &3739465346650352674 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4295707901619809641, guid: 6af240c51165fd24690e5006a392bfc7, type: 3}
+  m_PrefabInstance: {fileID: 610330624856228171}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43cb9f08689a4c6584bc468f182dce3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD60.Trains.Train
 --- !u!4 &7712688939387999550 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7165418056776635509, guid: 6af240c51165fd24690e5006a392bfc7, type: 3}
@@ -1235,6 +1269,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3084162138008325298}
     m_Modifications:
+    - target: {fileID: 771359186328500442, guid: cb73a8c206c585d468cc3fbee2c1daa7, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321615159009672191, guid: cb73a8c206c585d468cc3fbee2c1daa7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -5016436666750061397, guid: 192dbecc751d94a42b976bb177f986bc, type: 2}
     - target: {fileID: 5799292934900903103, guid: cb73a8c206c585d468cc3fbee2c1daa7, type: 3}
       propertyPath: _turnedOn
       value: 0
@@ -1261,7 +1303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7315547712404273540, guid: cb73a8c206c585d468cc3fbee2c1daa7, type: 3}
       propertyPath: m_Name
-      value: Light
+      value: Light A
       objectReference: {fileID: 0}
     - target: {fileID: 7362698227005888771, guid: cb73a8c206c585d468cc3fbee2c1daa7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1269,7 +1311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7362698227005888771, guid: cb73a8c206c585d468cc3fbee2c1daa7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7362698227005888771, guid: cb73a8c206c585d468cc3fbee2c1daa7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2847,7 +2889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2457338895972862958, guid: 52f00af650ad1a34b924e9c5091bb568, type: 3}
       propertyPath: m_Name
-      value: Rail
+      value: 'Rail [-05,00]'
       objectReference: {fileID: 0}
     - target: {fileID: 2715715423035182856, guid: 52f00af650ad1a34b924e9c5091bb568, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2919,6 +2961,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8116338648273415844, guid: 52f00af650ad1a34b924e9c5091bb568, type: 3}
       propertyPath: _nextChunk._chunk
+      value: 
+      objectReference: {fileID: 4934187002198188273}
+    - target: {fileID: 8116338648273415844, guid: 52f00af650ad1a34b924e9c5091bb568, type: 3}
+      propertyPath: _nextChunkForward._chunk
       value: 
       objectReference: {fileID: 4934187002198188273}
     m_RemovedComponents: []
@@ -3044,15 +3090,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8681278166759438871, guid: c85561f8dae7fc240b01dc9babd9231e, type: 3}
       propertyPath: m_Name
-      value: Exit
+      value: Exit X1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8962096434721850714, guid: c85561f8dae7fc240b01dc9babd9231e, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9069148964189636949, guid: c85561f8dae7fc240b01dc9babd9231e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 9069148964189636949, guid: c85561f8dae7fc240b01dc9babd9231e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9069148964189636949, guid: c85561f8dae7fc240b01dc9babd9231e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3091,6 +3141,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c85561f8dae7fc240b01dc9babd9231e, type: 3}
+--- !u!114 &757485855134306498 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2626745321602748727, guid: c85561f8dae7fc240b01dc9babd9231e, type: 3}
+  m_PrefabInstance: {fileID: 3384230462110351861}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0b34b23f0d454fbb4b29615c5197d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD60.Railway.ExitRailwayComponent
 --- !u!4 &5992924696650500256 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9069148964189636949, guid: c85561f8dae7fc240b01dc9babd9231e, type: 3}
@@ -3332,7 +3393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2457338895972862958, guid: 52f00af650ad1a34b924e9c5091bb568, type: 3}
       propertyPath: m_Name
-      value: Rail (2)
+      value: 'Rail [-03,00]'
       objectReference: {fileID: 0}
     - target: {fileID: 2715715423035182856, guid: 52f00af650ad1a34b924e9c5091bb568, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3439,7 +3500,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6820985291682979489}
     - target: {fileID: 8116338648273415844, guid: 52f00af650ad1a34b924e9c5091bb568, type: 3}
+      propertyPath: _nextChunkForward._chunk
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116338648273415844, guid: 52f00af650ad1a34b924e9c5091bb568, type: 3}
+      propertyPath: _nextChunkBackward._chunk
+      value: 
+      objectReference: {fileID: 6820985291682979489}
+    - target: {fileID: 8116338648273415844, guid: 52f00af650ad1a34b924e9c5091bb568, type: 3}
       propertyPath: _previousChunk._direction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116338648273415844, guid: 52f00af650ad1a34b924e9c5091bb568, type: 3}
+      propertyPath: _nextChunkForward._direction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116338648273415844, guid: 52f00af650ad1a34b924e9c5091bb568, type: 3}
+      propertyPath: _nextChunkBackward._direction
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
