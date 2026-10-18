@@ -5117,11 +5117,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8661224939203859535, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
       propertyPath: _tipText
-      value: 
+      value: 'Tip: Trains stop in stations during 5 seconds, even when they don''t
+        need to.'
       objectReference: {fileID: 0}
     - target: {fileID: 8661224939203859535, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
       propertyPath: _introText
-      value: 
+      value: Trains may need to stop in stations before they exit.
       objectReference: {fileID: 0}
     - target: {fileID: 8661224939203859535, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
       propertyPath: _objectives.Array.size

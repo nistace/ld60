@@ -33,16 +33,22 @@ namespace LD60.Levels.Editor
             foreach (var chunk in chunks)
             {
                 chunk.name = $"Rail [{-minX + chunk.transform.localPosition.x:00}{-minY + chunk.transform.localPosition.y:00}]";
-                if (!TryAssignBestNextChunkBackwardMatch(chunk, chunks))
+                if (chunk.NextChunkBackward is { Chunk: null } || chunk.NextChunkBackward.WorldOrigin != chunk.WorldOrigin)
                 {
-                    chunk.NextChunkBackward = new RailwayChunkWithDirection();
-                    Debug.LogWarning($"No origin found for {chunk.name}");
+                    if (!TryAssignBestNextChunkBackwardMatch(chunk, chunks))
+                    {
+                        chunk.NextChunkBackward = new RailwayChunkWithDirection();
+                        Debug.LogWarning($"No origin found for {chunk.name}");
+                    }
                 }
 
-                if (!TryAssignBestNextChunkForwardMath(chunk, chunks))
+                if (chunk.NextChunkForward is { Chunk: null } || chunk.NextChunkForward.WorldOrigin != chunk.WorldDestination)
                 {
-                    chunk.NextChunkForward = new RailwayChunkWithDirection();
-                    Debug.LogWarning($"No destination found for {chunk.name}");
+                    if (!TryAssignBestNextChunkForwardMath(chunk, chunks))
+                    {
+                        chunk.NextChunkForward = new RailwayChunkWithDirection();
+                        Debug.LogWarning($"No destination found for {chunk.name}");
+                    }
                 }
 
                 EditorUtility.SetDirty(chunk);

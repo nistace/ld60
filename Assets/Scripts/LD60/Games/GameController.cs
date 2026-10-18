@@ -22,6 +22,9 @@ namespace LD60.Games
 
         private CancellationTokenSource _resultCancellationTokenSource;
 
+        public event Action PostiveFeedbackWritten;
+        public event Action NegativeFeedbackWritten;
+
         private void Start() => StartCurrentLevel();
 
         private void OnDestroy() => EndCurrentLevel(false);
@@ -106,30 +109,56 @@ namespace LD60.Games
 
         private async UniTask RunResultAsync(Action callback, CancellationToken cancellationToken)
         {
-            if (CurrentLevelInstance)
+            if (CurrentLevelInstance == null || CurrentLevelInstance.Status == ELevelStatus.Incomplete)
             {
-                CurrentLevelInstance.EndTime = Time.time;
+                Debug.LogWarning("Running result, but the level is incomplete...");
+                callback?.Invoke();
+                return;
+            }
 
-                var resultText = CurrentLevelInstance.Status switch
-                {
-                    ELevelStatus.Incomplete => "???",
-                    ELevelStatus.Complete => "SUCCESS",
-                    ELevelStatus.WrongExit => "FAILED: ONE TRAIN LEFT AT THE WRONG EXIT",
-                    ELevelStatus.SkippedStops => "FAILED: ONE TRAIN LEFT BEFORE STOPPING IN STATIONS",
-                    _ => throw new ArgumentOutOfRangeException()
-                };
+            await UniTask.WaitForSeconds(.5f, cancellationToken: cancellationToken);
 
-                CurrentLevelInstance.SetResultText(resultText);
+            var resultBuilder = new StringBuilder();
+            CurrentLevelInstance.EndTime = Time.time;
 
+            if (CurrentLevelInstance.Status == ELevelStatus.Complete)
+            {
+                resultBuilder.AppendLine("SUCCESS!");
+                CurrentLevelInstance.SetResultText(resultBuilder.ToString());
+                PostiveFeedbackWritten?.Invoke();
                 await UniTask.WaitForSeconds(2, cancellationToken: cancellationToken);
 
-                if (CurrentLevelInstance.Status == ELevelStatus.Complete)
-                {
-                    CurrentLevelInstance.SetResultText(resultText + "<br>" + "Time: " + FormatLevelDuration(CurrentLevelInstance.Duration));
+                resultBuilder.AppendLine($"Time: {FormatLevelDuration(CurrentLevelInstance.Duration)}");
+                CurrentLevelInstance.SetResultText(resultBuilder.ToString());
+                PostiveFeedbackWritten?.Invoke();
+                await UniTask.WaitForSeconds(2, cancellationToken: cancellationToken);
 
-                    await UniTask.WaitForSeconds(2, cancellationToken: cancellationToken);
-                }
+                // SUBMIT SCORE
+
+                resultBuilder.AppendLine("<br>Loading next mission...");
+                CurrentLevelInstance.SetResultText(resultBuilder.ToString());
+                PostiveFeedbackWritten?.Invoke();
             }
+            else
+            {
+                resultBuilder.Append(CurrentLevelInstance.Status switch
+                {
+                    ELevelStatus.WrongExit => "Failed: one train left at the wrong exit",
+                    ELevelStatus.SkippedStops => "Failed: one train left before stopping at all stations",
+                    ELevelStatus.Incomplete or ELevelStatus.Complete => "???",
+                    _ => throw new ArgumentOutOfRangeException()
+                });
+
+                CurrentLevelInstance.SetResultText(resultBuilder.ToString());
+                NegativeFeedbackWritten?.Invoke();
+                await UniTask.WaitForSeconds(2, cancellationToken: cancellationToken);
+
+                resultBuilder.AppendLine("<br>Restarting mission...");
+                CurrentLevelInstance.SetResultText(resultBuilder.ToString());
+                NegativeFeedbackWritten?.Invoke();
+            }
+
+            await UniTask.WaitForSeconds(3, cancellationToken: cancellationToken);
 
             callback?.Invoke();
         }

@@ -23,9 +23,12 @@ namespace LD60.Trains
         private float RequiredDistanceToStop => Speed * TimeToStop * .5f;
         private float CurrentDistanceFromChunkEnd => (1 - _progressOnChunkRatio) * _currentRailwayChunk.ChunkLength;
         public Color Color => _identity.Color;
+        private bool HasCrashed { get; set; }
+        private Vector2 CrashedVelocity { get; set; }
 
         public event Action<Train, ExitRailwayComponent> ExitReached;
         public event Action<Train, StationRailwayComponent> StationReached;
+        public event Action<Train> Crashed;
 
         private bool ShouldBrake()
         {
@@ -89,5 +92,12 @@ namespace LD60.Trains
 
         public void OnExitReached(ExitRailwayComponent exit) => ExitReached?.Invoke(this, exit);
         public void OnStationReached(StationRailwayComponent station) => StationReached?.Invoke(this, station);
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            HasCrashed = true;
+            CrashedVelocity = other.relativeVelocity;
+            Crashed?.Invoke(this);
+        }
     }
 }

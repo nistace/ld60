@@ -31,8 +31,10 @@ namespace LD60.Inputs.Renderers
         {
             StringBuilder builder = new();
 
-            foreach (var executedCommand in _commandExecutor.LastCommands)
+            for (var index = _commandExecutor.LastCommands.Count - 1; index >= 0; index--)
             {
+                var executedCommand = _commandExecutor.LastCommands[index];
+
                 builder.Append($"<#{ColorUtility.ToHtmlStringRGB(executedCommand.Valid ? _validCommandColor : _invalidCommandColor)}>");
                 builder.Append($"> {executedCommand.Command}");
                 builder.Append(" </color>");
