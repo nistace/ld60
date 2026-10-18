@@ -257,7 +257,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2127,7 +2127,7 @@ MonoBehaviour:
   _objectiveManager: {fileID: 1212215561}
   _executor: {fileID: 1989243197}
   _inputParser: {fileID: 1989243195}
-  _levelIndex: 0
+  _levelIndex: 7
 --- !u!114 &1212215563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3323,12 +3323,12 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1212215560}
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1989243196}
   - {fileID: 1010747750}
   - {fileID: 1813309743}
-  - {fileID: 1212215560}
   - {fileID: 814809813}
   - {fileID: 1515601669}

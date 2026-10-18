@@ -17,6 +17,7 @@ namespace LD60.Railway.Renderers
             var panelNameItem = GetComponentInParent<IPanelNameItem>();
 
             _text.text = panelNameItem?.NameOnPanel ?? "";
+            transform.rotation = Quaternion.identity;
         }
 
         private void OnValidate() => Refresh();

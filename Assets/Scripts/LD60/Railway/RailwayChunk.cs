@@ -60,7 +60,7 @@ namespace LD60.Railway
             else
             {
                 Gizmos.color = Color.green;
-                Gizmos.DrawSphere(WorldOrigin, .05f);
+                Gizmos.DrawSphere(WorldPosition(.1f), .05f);
             }
 
             if (NextChunkForward.Chunk == null)
@@ -76,7 +76,7 @@ namespace LD60.Railway
             else
             {
                 Gizmos.color = Color.green;
-                Gizmos.DrawSphere(WorldDestination, .05f);
+                Gizmos.DrawSphere(WorldPosition(.9f), .05f);
             }
         }
 
