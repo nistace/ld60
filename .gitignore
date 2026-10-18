@@ -6,6 +6,7 @@ Temp/
 UserSettings
 _Recovery/
 _Recovery.meta
+Builds/
 
 *.csproj
 *.sln*
