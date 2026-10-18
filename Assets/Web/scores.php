@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode($json);
     
     $level = $data->level;
-    $name = $data->name;
+    $name = $data->user_name;
     $time = $data->time;
     
     // Get current best time

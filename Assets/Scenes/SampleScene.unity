@@ -3062,7 +3062,7 @@ MonoBehaviour:
   _objectiveManager: {fileID: 1212215561}
   _executor: {fileID: 1989243197}
   _inputParser: {fileID: 1989243195}
-  _levelIndex: 9
+  _levelIndex: 0
   _loginObjectiveHolder:
     _text: Hello. Thank you for using the Train-o-matic 3000!<br><br>To continue,
       type <i>LOGIN <user name></i>.
