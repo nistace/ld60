@@ -15,13 +15,13 @@ namespace LD60.Audio
 
         private void OnEnable()
         {
-            _gameController.PostiveFeedbackWritten += HandlePositiveFeedback;
+            _gameController.PositiveFeedbackWritten += HandlePositiveFeedback;
             _gameController.NegativeFeedbackWritten += HandleNegativeFeedback;
         }
 
         private void OnDisable()
         {
-            _gameController.PostiveFeedbackWritten -= HandlePositiveFeedback;
+            _gameController.PositiveFeedbackWritten -= HandlePositiveFeedback;
             _gameController.NegativeFeedbackWritten -= HandleNegativeFeedback;
         }
 

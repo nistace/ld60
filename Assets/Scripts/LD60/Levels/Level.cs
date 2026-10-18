@@ -11,6 +11,7 @@ namespace LD60.Levels
 {
     public class Level : MonoBehaviour, IObjectiveHolder
     {
+        [SerializeField] private string _id = "ID";
         [SerializeField] private string _missingName = "Mission 1";
         [SerializeField] private string _introText;
         [SerializeField] private string _tipText;
@@ -20,6 +21,8 @@ namespace LD60.Levels
 
         private readonly Dictionary<Train, LevelTrainObjective> _objectivesPerTrain = new();
         private readonly HashSet<LevelTrainObjective> _incompleteObjects = new();
+
+        public string ID => _id;
 
         public float OrthographicSize => _orthographicSize;
         public float FirstInputTime { get; set; }
@@ -123,7 +126,7 @@ namespace LD60.Levels
 
             if (!string.IsNullOrEmpty(_missingName))
             {
-                builder.AppendLine($"<i>{_missingName}</i>");
+                builder.AppendLine($"<align=\"right\"><i>{_missingName}</i></align>");
             }
 
             if (!string.IsNullOrEmpty(_introText))

@@ -5,6 +5,7 @@ using Cysharp.Threading.Tasks;
 using LD60.Inputs;
 using LD60.Levels;
 using LD60.Objectives;
+using LD60.Web;
 using UnityEngine;
 
 namespace LD60.Games
@@ -18,11 +19,12 @@ namespace LD60.Games
         [SerializeField] private InputParser _inputParser;
         [SerializeField] private int _levelIndex;
 
+        private string userName = "Anonymous";
         public Level CurrentLevelInstance { get; private set; }
 
         private CancellationTokenSource _resultCancellationTokenSource;
 
-        public event Action PostiveFeedbackWritten;
+        public event Action PositiveFeedbackWritten;
         public event Action NegativeFeedbackWritten;
 
         private void Start() => StartCurrentLevel();
@@ -125,23 +127,39 @@ namespace LD60.Games
             {
                 resultBuilder.AppendLine("SUCCESS!");
                 CurrentLevelInstance.SetResultText(resultBuilder.ToString());
-                PostiveFeedbackWritten?.Invoke();
+                PositiveFeedbackWritten?.Invoke();
                 await UniTask.WaitForSeconds(2, cancellationToken: cancellationToken);
 
                 resultBuilder.AppendLine($"Time: {FormatLevelDuration(CurrentLevelInstance.Duration)}");
                 CurrentLevelInstance.SetResultText(resultBuilder.ToString());
-                PostiveFeedbackWritten?.Invoke();
+                PositiveFeedbackWritten?.Invoke();
                 await UniTask.WaitForSeconds(2, cancellationToken: cancellationToken);
 
-                // SUBMIT SCORE
+                resultBuilder.AppendLine("Registering score...");
+                CurrentLevelInstance.SetResultText(resultBuilder.ToString());
+
+                var postResult = await ScoresWeb.Post(new ScoresWeb.ScoreEntry
+                {
+                    level = CurrentLevelInstance.ID,
+                    time = Mathf.RoundToInt(CurrentLevelInstance.Duration * 100),
+                    name = userName
+                });
+
+                if (postResult is { success: true, newBest: true })
+                {
+                    resultBuilder.AppendLine("**NEW BEST TIME**");
+                    CurrentLevelInstance.SetResultText(resultBuilder.ToString());
+                    PositiveFeedbackWritten?.Invoke();
+                    await UniTask.WaitForSeconds(2, cancellationToken: cancellationToken);
+                }
 
                 resultBuilder.AppendLine("Loading next mission...");
                 CurrentLevelInstance.SetResultText(resultBuilder.ToString());
-                PostiveFeedbackWritten?.Invoke();
+                PositiveFeedbackWritten?.Invoke();
             }
             else
             {
-                resultBuilder.Append(CurrentLevelInstance.Status switch
+                resultBuilder.AppendLine(CurrentLevelInstance.Status switch
                 {
                     ELevelStatus.WrongExit => "Failed: one train left at the wrong exit",
                     ELevelStatus.SkippedStops => "Failed: one train left before stopping at all stations",

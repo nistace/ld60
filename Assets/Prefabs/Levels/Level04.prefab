@@ -16914,9 +16914,13 @@ PrefabInstance:
       value: 1.5982825
       objectReference: {fileID: 0}
     - target: {fileID: 8661224939203859535, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: _id
+      value: L04
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661224939203859535, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
       propertyPath: _tipText
-      value: 'Tip: the timer starts with your first input in the terminal. You have
-        all the time you want to visualize objectives and planning routes.'
+      value: 'Tip: The timer only starts with your first input in the terminal. Take
+        your time to visualize objectives and plan your routes.'
       objectReference: {fileID: 0}
     - target: {fileID: 8661224939203859535, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
       propertyPath: _introText

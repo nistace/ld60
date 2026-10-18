@@ -17435,6 +17435,10 @@ PrefabInstance:
       value: 1.5982825
       objectReference: {fileID: 0}
     - target: {fileID: 8661224939203859535, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: _id
+      value: L04c
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661224939203859535, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
       propertyPath: _tipText
       value: 
       objectReference: {fileID: 0}

@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac603467e18493ca06f02ff7ecabf25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LD60.Levels.Level
+  _id: ID
   _missingName: Mission 1
   _introText: 
   _tipText: 
