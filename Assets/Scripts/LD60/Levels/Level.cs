@@ -49,17 +49,31 @@ namespace LD60.Levels
                 _objectivesPerTrain.Add(objective.Train, objective);
                 objective.Train.ExitReached += HandleTrainExitReached;
                 objective.Train.StationReached += HandleTrainStationReached;
+                objective.Train.Crashed += HandleTrainCrashed;
             }
+        }
+
+        private void HandleTrainCrashed(Train train, Vector3 vector3)
+        {
+            if (Status != ELevelStatus.Incomplete) return;
+
+            if (_objectivesPerTrain.TryGetValue(train, out var trainObjective))
+            {
+                trainObjective.Status = ELevelStatus.TrainCrashed;
+            }
+
+            Fail(ELevelStatus.TrainCrashed);
         }
 
         private void OnDestroy()
         {
             foreach (var objective in _objectives)
             {
-                if (objective.Train)
-                {
-                    objective.Train.ExitReached -= HandleTrainExitReached;
-                }
+                if (!objective.Train) continue;
+
+                objective.Train.ExitReached -= HandleTrainExitReached;
+                objective.Train.StationReached -= HandleTrainStationReached;
+                objective.Train.Crashed -= HandleTrainCrashed;
             }
         }
 
@@ -69,7 +83,7 @@ namespace LD60.Levels
 
             if (!_objectivesPerTrain.TryGetValue(train, out var trainObjective)) return;
 
-            foreach (var trainCollider in train.GetComponents<Collider>())
+            foreach (var trainCollider in train.GetComponents<Collider2D>())
             {
                 trainCollider.enabled = false;
             }

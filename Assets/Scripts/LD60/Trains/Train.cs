@@ -13,6 +13,8 @@ namespace LD60.Trains
         [SerializeField] private float _deceleration = 1;
         [SerializeField] private float _maxSpeed = 2;
         [SerializeField] private float _stopDistance = .5f;
+        [SerializeField] private float _crashVelocityCoefficient = 2;
+        [SerializeField] private float _crashVelocityLossOverTime = .3f;
 
         public float Speed { get; private set; }
         public RailwayChunkWithDirection CurrentRailwayChunk => _currentRailwayChunk;
@@ -28,7 +30,8 @@ namespace LD60.Trains
 
         public event Action<Train, ExitRailwayComponent> ExitReached;
         public event Action<Train, StationRailwayComponent> StationReached;
-        public event Action<Train> Crashed;
+        public event Action<Train, Vector3> Crashed;
+        public event Action StartedToMove;
 
         private bool ShouldBrake()
         {
@@ -44,10 +47,23 @@ namespace LD60.Trains
 
         private void Update()
         {
+            if (HasCrashed)
+            {
+                UpdateCrash();
+                return;
+            }
+
             if (_currentRailwayChunk == null) return;
             UpdateMovement();
             UpdateRailwayChunk();
             UpdatePosition();
+        }
+
+        private void UpdateCrash()
+        {
+            transform.position += new Vector3(CrashedVelocity.x, CrashedVelocity.y, 0) * Time.deltaTime;
+
+            CrashedVelocity = Vector2.MoveTowards(CrashedVelocity, Vector2.zero, Time.deltaTime * _crashVelocityLossOverTime);
         }
 
         private void UpdatePosition()
@@ -78,9 +94,16 @@ namespace LD60.Trains
             if (Mathf.Approximately(chunkLength, 0)) return;
 
             var brake = ShouldBrake();
+            var previousSpeed = Speed;
 
             Speed = Mathf.MoveTowards(Speed, brake ? 0 : _maxSpeed, Time.deltaTime * (brake ? _deceleration : _acceleration));
+
             _progressOnChunkRatio += (Speed * Time.deltaTime) / chunkLength;
+
+            if (Mathf.Approximately(previousSpeed, 0) && !Mathf.Approximately(Speed, 0))
+            {
+                StartedToMove?.Invoke();
+            }
         }
 
         private void OnDrawGizmos()
@@ -96,8 +119,9 @@ namespace LD60.Trains
         private void OnCollisionEnter2D(Collision2D other)
         {
             HasCrashed = true;
-            CrashedVelocity = other.relativeVelocity;
-            Crashed?.Invoke(this);
+            CrashedVelocity = (transform.position - other.transform.position).normalized * _crashVelocityCoefficient;
+
+            Crashed?.Invoke(this, other.contacts[0].point);
         }
     }
 }

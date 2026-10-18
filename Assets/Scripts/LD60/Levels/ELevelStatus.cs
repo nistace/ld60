@@ -5,6 +5,7 @@
         Incomplete = 0,
         Complete = 1,
         WrongExit = 2,
-        SkippedStops = 3
+        SkippedStops = 3,
+        TrainCrashed = 4
     }
 }

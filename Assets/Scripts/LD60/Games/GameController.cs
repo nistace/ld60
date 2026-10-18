@@ -214,6 +214,7 @@ namespace LD60.Games
                 {
                     ELevelStatus.WrongExit => "Failed: one train left at the wrong exit",
                     ELevelStatus.SkippedStops => "Failed: one train left before stopping at all stations",
+                    ELevelStatus.TrainCrashed => "Failed: one train crashed",
                     ELevelStatus.Incomplete or ELevelStatus.Complete => "???",
                     _ => throw new ArgumentOutOfRangeException()
                 });
