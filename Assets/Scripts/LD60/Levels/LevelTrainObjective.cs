@@ -33,5 +33,13 @@ namespace LD60.Levels
             CompletedStops++;
             return true;
         }
+
+        public bool TryGetNextStop(out StationRailwayComponent station)
+        {
+            station = null;
+            if (!HasNextStop) return false;
+            station = _stops[NextStopIndex];
+            return true;
+        }
     }
 }

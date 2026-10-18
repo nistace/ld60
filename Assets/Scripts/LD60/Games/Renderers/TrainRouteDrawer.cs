@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LD60.Games.Renderers
 {
-    public class LevelObjectiveHelpRenderer : MonoBehaviour
+    public class TrainRouteDrawer : MonoBehaviour
     {
         [SerializeField] private GameController _gameController;
         [SerializeField] private LineRenderer _lineRenderer;

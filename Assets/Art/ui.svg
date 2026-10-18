@@ -26,9 +26,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="11.313708"
-     inkscape:cx="355.54213"
-     inkscape:cy="230.20745"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="487.37335"
+     inkscape:cy="248.72481"
      inkscape:window-width="2560"
      inkscape:window-height="1369"
      inkscape:window-x="5112"
@@ -134,5 +134,10 @@
        style="fill:#447821;fill-opacity:0.317585;fill-rule:nonzero;stroke:#ffffff;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1"
        d="m 86.622053,55.05084 c 5.869908,-0.04677 5.869908,-0.04677 5.869908,-0.04677"
        id="path51" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#d8d8d8;stroke-width:1.1;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 99.881961,67.983345 h 4.443359 v -7.074291 h 2.54908 l -4.77076,-4.525206 -4.665524,4.525206 h 2.443845 z"
+       id="path52"
+       sodipodi:nodetypes="cccccccc" />
   </g>
 </svg>
