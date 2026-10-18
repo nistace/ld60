@@ -5125,6 +5125,10 @@ PrefabInstance:
       value: Trains may need to stop in stations before they exit.
       objectReference: {fileID: 0}
     - target: {fileID: 8661224939203859535, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: _missingName
+      value: 'Mission 9: Pulling in'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661224939203859535, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
       propertyPath: _objectives.Array.size
       value: 1
       objectReference: {fileID: 0}

@@ -112,6 +112,10 @@ PrefabInstance:
       propertyPath: _introText
       value: Bring all trains to their destinations!
       objectReference: {fileID: 0}
+    - target: {fileID: 8661224939203859535, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: _missingName
+      value: 'Mission 1: Tchoo tchoo'
+      objectReference: {fileID: 0}
     - target: {fileID: 9063384888292196301, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
       propertyPath: m_Name
       value: Light A

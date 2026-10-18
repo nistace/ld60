@@ -9106,6 +9106,10 @@ PrefabInstance:
       value: Use switches to redirect trains to the correct destination.
       objectReference: {fileID: 0}
     - target: {fileID: 8661224939203859535, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
+      propertyPath: _missingName
+      value: 'Mission 4: Railroad switch'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661224939203859535, guid: 3ec701e10090e9b4a9b49becdd81b0e2, type: 3}
       propertyPath: _objectives.Array.size
       value: 1
       objectReference: {fileID: 0}

@@ -11,6 +11,7 @@ namespace LD60.Levels
 {
     public class Level : MonoBehaviour, IObjectiveHolder
     {
+        [SerializeField] private string _missingName = "Mission 1";
         [SerializeField] private string _introText;
         [SerializeField] private string _tipText;
         [SerializeField] private LevelTrainObjective[] _objectives;
@@ -119,6 +120,11 @@ namespace LD60.Levels
         public string GetObjectivesText()
         {
             var builder = new StringBuilder();
+
+            if (!string.IsNullOrEmpty(_missingName))
+            {
+                builder.AppendLine($"<i>{_missingName}</i>");
+            }
 
             if (!string.IsNullOrEmpty(_introText))
             {

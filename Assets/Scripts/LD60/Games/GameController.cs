@@ -135,7 +135,7 @@ namespace LD60.Games
 
                 // SUBMIT SCORE
 
-                resultBuilder.AppendLine("<br>Loading next mission...");
+                resultBuilder.AppendLine("Loading next mission...");
                 CurrentLevelInstance.SetResultText(resultBuilder.ToString());
                 PostiveFeedbackWritten?.Invoke();
             }
@@ -153,7 +153,7 @@ namespace LD60.Games
                 NegativeFeedbackWritten?.Invoke();
                 await UniTask.WaitForSeconds(2, cancellationToken: cancellationToken);
 
-                resultBuilder.AppendLine("<br>Restarting mission...");
+                resultBuilder.AppendLine("Restarting mission...");
                 CurrentLevelInstance.SetResultText(resultBuilder.ToString());
                 NegativeFeedbackWritten?.Invoke();
             }
