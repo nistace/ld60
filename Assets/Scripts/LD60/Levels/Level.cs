@@ -32,7 +32,7 @@ namespace LD60.Levels
         public float Duration => EndTime - FirstInputTime;
         public LevelTrainObjective SelectedObjective { get; private set; }
         private string _highScoreUserName = string.Empty;
-        private float _highScoreTime = 0f;
+        private float _highScoreTime;
 
         public event Action ObjectivesStateChanged;
         public event Action SelectedObjectiveChanged;
