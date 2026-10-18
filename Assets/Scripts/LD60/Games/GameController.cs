@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using LD60.Inputs;
 using LD60.Levels;
@@ -18,16 +19,66 @@ namespace LD60.Games
         [SerializeField] private CommandExecutor _executor;
         [SerializeField] private InputParser _inputParser;
         [SerializeField] private int _levelIndex;
+        [SerializeField] private LoginObjectiveHolder _loginObjectiveHolder;
 
-        private string userName = "Anonymous";
+        private enum EState
+        {
+            Login = 0,
+            LevelFlow = 1,
+            SelectionScreen = 2,
+            LevelLoopBackToSelection = 3,
+        }
+
+        private string userName = "";
         public Level CurrentLevelInstance { get; private set; }
+        private EState State = EState.Login;
 
         private CancellationTokenSource _resultCancellationTokenSource;
 
         public event Action PositiveFeedbackWritten;
         public event Action NegativeFeedbackWritten;
 
-        private void Start() => StartCurrentLevel();
+        private void Start()
+        {
+#if !UNITY_EDITOR
+            _levelIndex = 0;
+#endif
+
+            DoLoginFlowAsync().Forget();
+        }
+
+        private async UniTask DoLoginFlowAsync()
+        {
+            State = EState.Login;
+            await UniTask.WaitForSeconds(.5f);
+
+            _loginObjectiveHolder.Reset();
+            _objectiveManager.CurrentObjectiveHolder = _loginObjectiveHolder;
+            PositiveFeedbackWritten?.Invoke();
+
+            var completionSource = new UniTaskCompletionSource<string>();
+            CommandExecutor.SubscribeCommandHandler(_loginObjectiveHolder.Command, command => completionSource.TrySetResult(command));
+
+            var result = await completionSource.Task;
+
+            CommandExecutor.UnsubscribeCommandHandler(_loginObjectiveHolder.Command);
+
+            userName = result[_loginObjectiveHolder.Command.Length..].Trim();
+
+            if (!string.IsNullOrEmpty(userName))
+            {
+                _loginObjectiveHolder.Add(string.Empty);
+                _loginObjectiveHolder.Add($"Hello {userName} ^_^");
+                PositiveFeedbackWritten?.Invoke();
+                await UniTask.WaitForSeconds(2);
+            }
+
+            _loginObjectiveHolder.Add("Loading...");
+            await UniTask.WaitForSeconds(2);
+
+            State = EState.LevelFlow;
+            StartCurrentLevel();
+        }
 
         private void OnDestroy() => EndCurrentLevel(false);
 
@@ -132,30 +183,30 @@ namespace LD60.Games
 
                 resultBuilder.AppendLine($"Time: {FormatLevelDuration(CurrentLevelInstance.Duration)}");
                 CurrentLevelInstance.SetResultText(resultBuilder.ToString());
-                PositiveFeedbackWritten?.Invoke();
                 await UniTask.WaitForSeconds(2, cancellationToken: cancellationToken);
 
-                resultBuilder.AppendLine("Registering score...");
-                CurrentLevelInstance.SetResultText(resultBuilder.ToString());
-
-                var postResult = await ScoresWeb.Post(new ScoresWeb.ScoreEntry
+                if (!string.IsNullOrEmpty(userName))
                 {
-                    level = CurrentLevelInstance.ID,
-                    time = Mathf.RoundToInt(CurrentLevelInstance.Duration * 100),
-                    name = userName
-                });
-
-                if (postResult is { success: true, newBest: true })
-                {
-                    resultBuilder.AppendLine("**NEW BEST TIME**");
+                    resultBuilder.AppendLine("Registering score...");
                     CurrentLevelInstance.SetResultText(resultBuilder.ToString());
-                    PositiveFeedbackWritten?.Invoke();
-                    await UniTask.WaitForSeconds(2, cancellationToken: cancellationToken);
+
+                    var postResult = await ScoresWeb.Post(new ScoresWeb.ScoreEntry
+                    {
+                        level = CurrentLevelInstance.ID,
+                        time = Mathf.RoundToInt(CurrentLevelInstance.Duration * 100),
+                        name = userName
+                    });
+
+                    if (postResult is { success: true, newBest: true })
+                    {
+                        resultBuilder.AppendLine("**NEW BEST TIME**");
+                        CurrentLevelInstance.SetResultText(resultBuilder.ToString());
+                        PositiveFeedbackWritten?.Invoke();
+                        await UniTask.WaitForSeconds(2, cancellationToken: cancellationToken);
+                    }
                 }
 
                 resultBuilder.AppendLine("Loading next mission...");
-                CurrentLevelInstance.SetResultText(resultBuilder.ToString());
-                PositiveFeedbackWritten?.Invoke();
             }
             else
             {
@@ -172,10 +223,9 @@ namespace LD60.Games
                 await UniTask.WaitForSeconds(2, cancellationToken: cancellationToken);
 
                 resultBuilder.AppendLine("Restarting mission...");
-                CurrentLevelInstance.SetResultText(resultBuilder.ToString());
-                NegativeFeedbackWritten?.Invoke();
             }
 
+            CurrentLevelInstance.SetResultText(resultBuilder.ToString());
             await UniTask.WaitForSeconds(3, cancellationToken: cancellationToken);
 
             callback?.Invoke();

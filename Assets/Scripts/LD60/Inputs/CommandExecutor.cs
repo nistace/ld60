@@ -13,6 +13,7 @@ namespace LD60.Inputs
         public IReadOnlyList<ExecutedCommand> LastCommands => _lastCommands;
 
         private static readonly Dictionary<string, Action> SubscribedCommands = new();
+        private static readonly Dictionary<string, Action<string>> SubscribedCommandsWithParameters = new();
 
         public event Action<ExecutedCommand> CommandHandled;
         public event Action Cleared;
@@ -25,12 +26,18 @@ namespace LD60.Inputs
             }
         }
 
+        public static void SubscribeCommandHandler(string command, Action<string> callback)
+        {
+            if (!SubscribedCommandsWithParameters.TryAdd(command, callback))
+            {
+                Debug.LogWarning($"Cannot subscribe command. Command was already subscribed: {command}");
+            }
+        }
+
         public static void UnsubscribeCommandHandler(string command)
         {
-            if (!SubscribedCommands.Remove(command))
-            {
-                Debug.LogWarning($"Cannot unsubscribe command. Command was not subscribed: {command}");
-            }
+            SubscribedCommands.Remove(command);
+            SubscribedCommandsWithParameters.Remove(command);
         }
 
         private void OnEnable() => _inputParser.InputCommitted += HandleInputCommitted;
@@ -39,16 +46,32 @@ namespace LD60.Inputs
 
         private void HandleInputCommitted(string input)
         {
-            var commandExists = SubscribedCommands.TryGetValue(input, out var callback);
-            var executedCommand = new ExecutedCommand(input, commandExists);
+            ExecutedCommand executedCommand;
 
-            _lastCommands.Add(executedCommand);
-
-            if (commandExists)
+            if (SubscribedCommands.TryGetValue(input, out var callback))
             {
+                executedCommand = new ExecutedCommand(input, true);
+
+                _lastCommands.Add(executedCommand);
                 callback?.Invoke();
+                CommandHandled?.Invoke(executedCommand);
+                return;
             }
 
+            foreach (var commandWithParameters in SubscribedCommandsWithParameters)
+            {
+                if (!input.StartsWith(commandWithParameters.Key)) continue;
+
+                executedCommand = new ExecutedCommand(input, true);
+
+                _lastCommands.Add(executedCommand);
+                commandWithParameters.Value?.Invoke(input);
+                CommandHandled?.Invoke(executedCommand);
+                return;
+            }
+
+            executedCommand = new ExecutedCommand(input, false);
+            _lastCommands.Add(executedCommand);
             CommandHandled?.Invoke(executedCommand);
         }
 
