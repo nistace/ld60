@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $res = $conn->query("SELECT level, user_name, time FROM ( SELECT level, user_name, time, ROW_NUMBER() OVER (PARTITION BY level ORDER BY time ASC, user_name ASC ) AS rn FROM ld60_scores) ranked WHERE rn = 1 ORDER BY level");
 
     $out = [];
-    $out["result"] = $res->fetch_all(MYSQLI_ASSOC);
+    $out["scores"] = $res->fetch_all(MYSQLI_ASSOC);
 
     header('Content-type: application/json');
     echo(json_encode($out));

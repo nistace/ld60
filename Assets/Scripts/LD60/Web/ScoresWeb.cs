@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -14,19 +15,19 @@ namespace LD60.Web
     {
         private const string url = "https://nathanistace.be/gamejams/ld60/scores.php";
 
-        public static async UniTask<Dictionary<string, (string name, int time)>> Get()
+        public static async UniTask<Dictionary<string, (string name, int time)>> Get(CancellationToken cancellationToken = default)
         {
             try
             {
                 var request = UnityWebRequest.Get(url);
 
-                await request.SendWebRequest().ToUniTask();
+                await request.SendWebRequest().ToUniTask(cancellationToken: cancellationToken);
 
                 if (request.result == UnityWebRequest.Result.Success)
                 {
                     var responseData = JsonUtility.FromJson<GetScoresResponse>(request.downloadHandler.text.TrimStart('\uFEFF'));
 
-                    return responseData.scores.ToDictionary(t => t.level, t => (t.name, t.time));
+                    return responseData.scores.ToDictionary(t => t.level, t => (t.user_name, t.time));
                 }
 
                 Debug.LogError(request.error);
@@ -39,7 +40,7 @@ namespace LD60.Web
             return new Dictionary<string, (string name, int time)>();
         }
 
-        public static async UniTask<(bool success, bool newBest)> Post(ScoreEntry entry)
+        public static async UniTask<(bool success, bool newBest)> Post(ScoreEntry entry, CancellationToken cancellationToken = default)
         {
             try
             {
@@ -50,7 +51,7 @@ namespace LD60.Web
 
                 request.SetRequestHeader("Content-Type", "application/json");
 
-                await request.SendWebRequest().ToUniTask();
+                await request.SendWebRequest().ToUniTask(cancellationToken: cancellationToken);
 
                 if (request.result != UnityWebRequest.Result.Success)
                 {
@@ -77,7 +78,7 @@ namespace LD60.Web
         [Serializable]
         public class ScoreEntry
         {
-            public string name;
+            public string user_name;
             public string level;
             public int time;
         }

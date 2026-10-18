@@ -30,7 +30,9 @@ namespace LD60.Levels
         public ELevelStatus Status { get; private set; }
         private string ResultText { get; set; }
         public float Duration => EndTime - FirstInputTime;
-        public LevelTrainObjective SelectedObjective { get; set; }
+        public LevelTrainObjective SelectedObjective { get; private set; }
+        private string _highScoreUserName = string.Empty;
+        private float _highScoreTime = 0f;
 
         public event Action ObjectivesStateChanged;
         public event Action SelectedObjectiveChanged;
@@ -143,6 +145,13 @@ namespace LD60.Levels
                 builder.AppendLine($"<align=\"right\"><i>{_missingName}</i></align>");
             }
 
+            if (!string.IsNullOrEmpty(_highScoreUserName))
+            {
+                builder.AppendLine($"<align=\"right\">High score: {_highScoreUserName} ({LevelDurationUtils.FormatLevelDuration(_highScoreTime)})</align>");
+            }
+
+            builder.AppendLine();
+
             if (!string.IsNullOrEmpty(_introText))
             {
                 builder.AppendLine(_introText);
@@ -251,6 +260,14 @@ namespace LD60.Levels
                     return;
                 }
             }
+        }
+
+        public void SetHighScore(string userName, float time)
+        {
+            _highScoreUserName = userName;
+            _highScoreTime = time;
+
+            ObjectivesStateChanged?.Invoke();
         }
     }
 }

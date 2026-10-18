@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using LD60.Inputs;
 using LD60.Levels;
@@ -21,17 +21,9 @@ namespace LD60.Games
         [SerializeField] private int _levelIndex;
         [SerializeField] private LoginObjectiveHolder _loginObjectiveHolder;
 
-        private enum EState
-        {
-            Login = 0,
-            LevelFlow = 1,
-            SelectionScreen = 2,
-            LevelLoopBackToSelection = 3,
-        }
-
-        private string userName = "";
+        private string _userName = "";
+        private Dictionary<string, (string name, int time)> _highScores = new();
         public Level CurrentLevelInstance { get; private set; }
-        private EState State = EState.Login;
 
         private CancellationTokenSource _resultCancellationTokenSource;
 
@@ -49,8 +41,10 @@ namespace LD60.Games
 
         private async UniTask DoLoginFlowAsync()
         {
-            State = EState.Login;
-            await UniTask.WaitForSeconds(.5f);
+            var delay = UniTask.WaitForSeconds(.5f, cancellationToken: destroyCancellationToken);
+            _highScores = await ScoresWeb.Get(destroyCancellationToken);
+
+            await delay;
 
             _loginObjectiveHolder.Reset();
             _objectiveManager.CurrentObjectiveHolder = _loginObjectiveHolder;
@@ -63,12 +57,12 @@ namespace LD60.Games
 
             CommandExecutor.UnsubscribeCommandHandler(_loginObjectiveHolder.Command);
 
-            userName = result[_loginObjectiveHolder.Command.Length..].Trim();
+            _userName = result[_loginObjectiveHolder.Command.Length..].Trim();
 
-            if (!string.IsNullOrEmpty(userName))
+            if (!string.IsNullOrEmpty(_userName))
             {
                 _loginObjectiveHolder.Add(string.Empty);
-                _loginObjectiveHolder.Add($"Hello {userName} ^_^");
+                _loginObjectiveHolder.Add($"Hello {_userName} ^_^");
                 PositiveFeedbackWritten?.Invoke();
                 await UniTask.WaitForSeconds(2);
             }
@@ -76,7 +70,6 @@ namespace LD60.Games
             _loginObjectiveHolder.Add("Loading...");
             await UniTask.WaitForSeconds(2);
 
-            State = EState.LevelFlow;
             StartCurrentLevel();
         }
 
@@ -128,6 +121,12 @@ namespace LD60.Games
             CurrentLevelInstance = Instantiate(_levelsLibrary[_levelIndex], Vector3.zero, Quaternion.identity);
             CurrentLevelInstance.Succeeded += HandleCurrentLevelSucceeded;
             CurrentLevelInstance.Failed += HandleCurrentLevelFailed;
+
+            if (_highScores != null && _highScores.TryGetValue(CurrentLevelInstance.ID, out var highScore))
+            {
+                CurrentLevelInstance.SetHighScore(highScore.name, LevelDurationUtils.IntDurationToFloat(highScore.time));
+            }
+
             _objectiveManager.CurrentObjectiveHolder = CurrentLevelInstance;
 
             _camera.orthographicSize = CurrentLevelInstance.OrthographicSize;
@@ -181,28 +180,33 @@ namespace LD60.Games
                 PositiveFeedbackWritten?.Invoke();
                 await UniTask.WaitForSeconds(2, cancellationToken: cancellationToken);
 
-                resultBuilder.AppendLine($"Time: {FormatLevelDuration(CurrentLevelInstance.Duration)}");
+                resultBuilder.AppendLine($"Time: {LevelDurationUtils.FormatLevelDuration(CurrentLevelInstance.Duration)}");
                 CurrentLevelInstance.SetResultText(resultBuilder.ToString());
                 await UniTask.WaitForSeconds(2, cancellationToken: cancellationToken);
 
-                if (!string.IsNullOrEmpty(userName))
+                if (!string.IsNullOrEmpty(_userName))
                 {
                     resultBuilder.AppendLine("Registering score...");
                     CurrentLevelInstance.SetResultText(resultBuilder.ToString());
 
                     var postResult = await ScoresWeb.Post(new ScoresWeb.ScoreEntry
-                    {
-                        level = CurrentLevelInstance.ID,
-                        time = Mathf.RoundToInt(CurrentLevelInstance.Duration * 100),
-                        name = userName
-                    });
+                        {
+                            level = CurrentLevelInstance.ID,
+                            time = LevelDurationUtils.DurationToInt(CurrentLevelInstance.Duration),
+                            user_name = _userName
+                        },
+                        cancellationToken);
 
                     if (postResult is { success: true, newBest: true })
                     {
                         resultBuilder.AppendLine("**NEW BEST TIME**");
                         CurrentLevelInstance.SetResultText(resultBuilder.ToString());
                         PositiveFeedbackWritten?.Invoke();
-                        await UniTask.WaitForSeconds(2, cancellationToken: cancellationToken);
+                        var delay = UniTask.WaitForSeconds(2, cancellationToken: cancellationToken);
+
+                        _highScores = await ScoresWeb.Get(destroyCancellationToken);
+
+                        await delay;
                     }
                 }
 
@@ -230,16 +234,6 @@ namespace LD60.Games
             await UniTask.WaitForSeconds(3, cancellationToken: cancellationToken);
 
             callback?.Invoke();
-        }
-
-        private static string FormatLevelDuration(float duration)
-        {
-            if (duration > 60)
-            {
-                return $"{(int)duration / 60:00}:{duration % 60:00.00}";
-            }
-
-            return $"{duration:00.00} seconds";
         }
     }
 }
